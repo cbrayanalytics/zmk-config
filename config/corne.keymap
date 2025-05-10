@@ -35,7 +35,7 @@
 //                      | GUI |  P  | SPC |     | ENT |     | LCTRL |
                 bindings = <
    &kp N1    &kp N2          &kp N3          &kp N4          &kp N5           &kp N6       &kp N7           &kp N8         &kp N9         &kp N0 
-   &bt TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp K_VOL_UP     &kp LEFT     &kp DOWN         &kp UP         &kp RIGHT      &kp BSPC 
+   &kp TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp K_VOL_UP     &kp LEFT     &kp DOWN         &kp UP         &kp RIGHT      &kp BSPC 
    &kp LSHFT &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp K_VOL_DN     &kp K_VOL_DN &kp K_PLAY_PAUSE &kp K_VOL_MUTE &kp K_VOL_NEXT &kp ALT 
                                                 &kp LGUI &trans &kp SPACE     &kp RET &trans &kp LCTRL
                         >;
