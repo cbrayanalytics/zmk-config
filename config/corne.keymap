@@ -37,7 +37,7 @@
                 bindings = <
    &kp N1    &kp N2          &kp N3          &kp N4          &kp N5           &kp N6       &kp N7           &kp N8         &kp N9         &kp N0
    &kp TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp K_VOL_UP     &kp LEFT     &kp DOWN         &kp UP         &kp RIGHT      &kp BSPC
-   &kp LSHFT &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp K_VOL_DN     &kp K_VOL_DN &kp K_PLAY_PAUSE &kp K_VOL_MUTE &kp K_VOL_NEXT &kp ALT
+   &kp LSHFT &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp K_VOL_DN     &kp K_VOL_DN &kp K_PLAY_PAUSE &kp K_VOL_MUTE &kp K_VOL_NEXT &kp RALT
                                                 &kp LGUI &trans &kp SPACE     &kp RET &trans &kp LCTRL
                         >;
                 };
@@ -53,7 +53,7 @@
     &kp EXCL  &kp AT     &kp HASH     &kp DLLR      &kp PRCNT         &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR
     &kp GRAVE &bt BT_CLR &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH
     &kp TILDE &trans     &trans       &kp C_BRI_INC &kp C_BRI_DEC     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE
-                                        &kp LGUI &trans &kp SPACE     &kp RET &trans &kp RALT
+                                        &kp LGUI &trans &kp SPACE     &kp RET &trans &kp LCTRL 
                         >;
                 };
         };
