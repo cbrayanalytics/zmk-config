@@ -4,9 +4,9 @@
 #include <dt-bindings/zmk/rgb.h>
 
 
-/* &led_strip { */
-/*     chain-length = <27>; */
-/* }; */
+&led_strip {
+    chain-length = <27>;
+};
 
 / {
         keymap {
@@ -20,9 +20,9 @@
 // |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M   |  ,  |  .  |  /  |
 //             | GUI | LWR | SPC |     | ENT | RSE  | LCTRL |
                 bindings = <
-    &kp Q &kp W &kp E &kp R &kp T  &kp Y &kp U  &kp I     &kp O   &kp P
-    &kp A &kp S &kp D &kp F &kp G  &kp H &kp J  &kp K     &kp L   &kp SEMI
-    &kp Z &kp X &kp C &kp V &kp B  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH
+    &trans &kp Q &kp W &kp E &kp R &kp T  &kp Y &kp U  &kp I     &kp O   &kp P    &trans
+    &trans &kp A &kp S &kp D &kp F &kp G  &kp H &kp J  &kp K     &kp L   &kp SEMI &trans 
+    &trans &kp Z &kp X &kp C &kp V &kp B  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &trans
          &kp LGUI &mo 1 &kp SPACE  &kp RET &mo 2 &kp LCTRL
                         >;
                 };
@@ -33,9 +33,9 @@
 // |SHFT |RGB_OFF|RGB_EFR|RGB_BRD|K_VOL_DN|     |K_PLAY_PAUSE|K_MUTE|K_NEXT|K_PREV|ALT|
 //                      | GUI |  P  | SPC |     | ENT |     | LCTRL |
                 bindings = <
-   &kp N1    &kp N2          &kp N3          &kp N4          &kp N5        &kp N6           &kp N7                &kp N8     &kp N9         &kp N0
-   &kp TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp C_VOL_UP  &kp LEFT         &kp DOWN              &kp UP     &kp RIGHT      &kp BSPC
-   &kp LSHFT &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp C_VOL_DN  &kp C_PLAY_PAUSE &kp C_MUTE &kp C_NEXT &kp C_PREV &kp RALT
+   &trans kp N1    &kp N2          &kp N3          &kp N4          &kp N5        &kp N6           &kp N7                &kp N8     &kp N9         &kp N0     &trans
+   &trans kp TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp C_VOL_UP  &kp LEFT         &kp DOWN              &kp UP     &kp RIGHT      &kp BSPC   &trans
+   &trans kp LSHFT &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp C_VOL_DN  &kp C_PLAY_PAUSE &kp C_MUTE &kp C_NEXT &kp C_PREV &kp RALT       &nonetrans &trans
                                                 &kp LGUI &trans &kp SPACE  &kp RET &trans &kp LCTRL
                         >;
                 };
@@ -46,9 +46,9 @@
 // |  ~  | | |C_BRI_INC|C_BRI_DEC|     |  _  |  +  |  {  |  }  | "|" |
 //             | GUI |     | SPC |     | ENT |  p  | LCTRL |
                         bindings = <
-    &kp EXCL  &kp AT     &kp HASH     &kp DLLR      &kp PRCNT         &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR
-    &kp GRAVE &bt BT_CLR &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH
-    &kp TILDE &trans     &trans       &kp C_BRI_INC &kp C_BRI_DEC     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE
+    &trans &kp EXCL  &kp AT     &kp HASH     &kp DLLR      &kp PRCNT         &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &trans
+    &trans &kp GRAVE &bt BT_CLR &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &trans
+    &trans &kp TILDE &trans     &trans       &kp C_BRI_INC &kp C_BRI_DEC     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &trans
                                         &kp LGUI &trans &kp SPACE     &kp RET &trans &kp LCTRL 
                         >;
                 };
