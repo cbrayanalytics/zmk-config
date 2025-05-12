@@ -9,7 +9,6 @@
     chain-length = <27>;
 };
 
-//
 // keyboard layout
 / {
         combos {
@@ -17,7 +16,7 @@
             combo_esc {
                 timeout-ms = <25>;
                 key-positions = <q q>;
-                bindings = <&kp ESC>;
+                bindings = <&kp ESCAPE>;
             };
 
             combo_tilde {
@@ -40,7 +39,7 @@
         };
 
         keymap {
-                compatible = "zmk,keymap";none
+                compatible = "zmk,keymap";
 
 
                 default_layer {
