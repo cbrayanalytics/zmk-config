@@ -9,22 +9,21 @@
     chain-length = <27>;
 };
 
-// keyboard layout
 / {
         combos {
             compatible = "zmk,combos";
             combo_esc {
-                timeout-ms = <25>;
+                timeout-ms = <50>;
                 key-positions = <Q Q>;
-                bindings = <&kp ESCAPE>;
+                bindings = <&kp ESC>;
             };
             combo_tilde {
-                timeout-ms = <25>;
+                timeout-ms = <50>;
                 key-positions = <A A>;
                 bindings = <&kp TILDE>;
             };
             combo_delete {
-                timeout-ms = <25>;
+                timeout-ms = <50>;
                 key-positions = <P P>;
                 bindings = <&kp DEL>;
             };
