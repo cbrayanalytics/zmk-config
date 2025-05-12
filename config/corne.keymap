@@ -14,8 +14,13 @@
             compatible = "zmk,combos";
             combo_esc {
                 timeout-ms = <50>;
-                key-positions = <Q>;
+                key-positions = <0 0>;
                 bindings = <&kp ESC>;
+            };
+            combo_vim {
+                timeout-ms = <50>;
+                key-positions = <16 17>;
+                bindings = <&kp LCTRL &kp LBKT>;
             };
         };
 
