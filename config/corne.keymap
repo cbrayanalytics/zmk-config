@@ -20,7 +20,7 @@
             combo_vim {
                 timeout-ms = <50>;
                 key-positions = <20 21>;
-                bindings = <&kp LC(&kp LBKT)>;
+                bindings = <&kp LC(LBKT)>;
             };
         };
 
