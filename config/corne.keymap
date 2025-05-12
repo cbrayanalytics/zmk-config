@@ -14,24 +14,9 @@
             compatible = "zmk,combos";
             combo_esc {
                 timeout-ms = <50>;
-                key-positions = <Q Q>;
+                key-positions = <B K>;
                 bindings = <&kp ESC>;
             };
-            combo_tilde {
-                timeout-ms = <50>;
-                key-positions = <A A>;
-                bindings = <&kp TILDE>;
-            };
-            combo_delete {
-                timeout-ms = <50>;
-                key-positions = <P P>;
-                bindings = <&kp DEL>;
-            };
-            /* combo_vim_escape { */
-            /*   timeout-ms = <50>; */
-            /*   key-positions = <J K>; */
-            /*   bindings = <&kp LC(LBKT)>; */
-            /* }; */
         };
 
         keymap {
