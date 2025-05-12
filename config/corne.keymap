@@ -4,13 +4,47 @@
 #include <dt-bindings/zmk/rgb.h>
 
 
+
 &led_strip {
     chain-length = <27>;
 };
 
+
+// keyboard combos
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <25>;
+            key-positions = <q q>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_tilde {
+            timeout-ms = <25>;
+            key-positions = <a a>;
+            bindings = <&kp TILDE>;
+        };
+
+        combo_delete {
+            timeout-ms = <25>;
+            key-positions = <p p>;
+            bindings = <&kp DEL>;
+        };
+
+        combo_vim_escape {
+          timeout-ms = <50>;
+          key-positions = <j k>;
+          bindings = <&kp LC(LBKT)>;
+        };
+    };
+};
+
+
+// keyboard layout
 / {
         keymap {
-                compatible = "zmk,keymap";
+                compatible = "zmk,keymap";none
 
 
                 default_layer {
@@ -23,7 +57,7 @@
     &trans &kp Q &kp W &kp E &kp R &kp T  &kp Y &kp U  &kp I     &kp O   &kp P    &trans
     &trans &kp A &kp S &kp D &kp F &kp G  &kp H &kp J  &kp K     &kp L   &kp SEMI &trans 
     &trans &kp Z &kp X &kp C &kp V &kp B  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &trans
-         &kp LGUI &mo 1 &kp SPACE  &kp RET &mo 2 &kp LCTRL
+         &kp LGUI &mo 1 &kp SPACE  &kp RET &mo 2 &kp LSHFT
                         >;
                 };
                 lower_layer {
@@ -33,10 +67,10 @@
 // |SHFT |RGB_OFF|RGB_EFR|RGB_BRD|K_VOL_DN|     |K_PLAY_PAUSE|K_MUTE|K_NEXT|K_PREV|ALT|
 //                      | GUI |  P  | SPC |     | ENT |     | LCTRL |
                 bindings = <
-   &trans &kp N1    &kp N2          &kp N3          &kp N4          &kp N5        &kp N6           &kp N7                &kp N8     &kp N9         &kp N0     &trans
-   &trans &kp TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp C_VOL_UP  &kp LEFT         &kp DOWN              &kp UP     &kp RIGHT      &kp BSPC   &trans
-   &trans &kp LSHFT &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp C_VOL_DN  &kp C_PLAY_PAUSE &kp C_MUTE &kp C_NEXT &kp C_PREV &kp RALT       &trans &trans
-                                                &kp LGUI &trans &kp SPACE  &kp RET &trans &kp LCTRL
+   &trans &kp N1    &kp N2          &kp N3          &kp N4          &kp N5        &kp N6           &kp N7     &kp N8     &kp N9     &kp N0    &trans
+   &trans &kp TAB   &rgb_ug RGB_ON  &rgb_ug RGB_EFF &rgb_ug RGB_BRI &kp C_VOL_UP  &kp LEFT         &kp DOWN   &kp UP     &kp RIGHT  &kp BSPC  &trans
+   &trans &kp LCTRL &rgb_ug RGB_OFF &rgb_ug RGB_EFR &rgb_ug RGB_BRD &kp C_VOL_DN  &kp C_PLAY_PAUSE &kp C_MUTE &kp C_NEXT &kp C_PREV &kp RALT  &trans
+                                                &kp LGUI &trans &kp SPACE  &kp RET &trans &kp LSHFT
                         >;
                 };
                 raise_layer {
@@ -48,8 +82,8 @@
                         bindings = <
     &trans &kp EXCL  &kp AT     &kp HASH     &kp DLLR      &kp PRCNT         &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &trans
     &trans &kp GRAVE &bt BT_CLR &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &trans
-    &trans &kp TILDE &trans     &trans       &kp C_BRI_INC &kp C_BRI_DEC     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &trans
-                                        &kp LGUI &trans &kp SPACE     &kp RET &trans &kp LCTRL 
+    &trans &kp TILDE &kp LCTRL   &trans       &kp C_BRI_INC &kp C_BRI_DEC     &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &trans
+                                        &kp LGUI &trans &kp SPACE     &kp RET &trans &kp LSHFT 
                         >;
                 };
         };
