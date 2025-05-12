@@ -9,40 +9,36 @@
     chain-length = <27>;
 };
 
-
-// keyboard combos
-/ {
-    combos {
-        compatible = "zmk,combos";
-        combo_esc {
-            timeout-ms = <25>;
-            key-positions = <q q>;
-            bindings = <&kp ESC>;
-        };
-
-        combo_tilde {
-            timeout-ms = <25>;
-            key-positions = <a a>;
-            bindings = <&kp TILDE>;
-        };
-
-        combo_delete {
-            timeout-ms = <25>;
-            key-positions = <p p>;
-            bindings = <&kp DEL>;
-        };
-
-        combo_vim_escape {
-          timeout-ms = <50>;
-          key-positions = <j k>;
-          bindings = <&kp LC(LBKT)>;
-        };
-    };
-};
-
-
+//
 // keyboard layout
 / {
+        combos {
+            compatible = "zmk,combos";
+            combo_esc {
+                timeout-ms = <25>;
+                key-positions = <q q>;
+                bindings = <&kp ESC>;
+            };
+
+            combo_tilde {
+                timeout-ms = <25>;
+                key-positions = <a a>;
+                bindings = <&kp TILDE>;
+            };
+
+            combo_delete {
+                timeout-ms = <25>;
+                key-positions = <p p>;
+                bindings = <&kp DEL>;
+            };
+
+            combo_vim_escape {
+              timeout-ms = <50>;
+              key-positions = <j k>;
+              bindings = <&kp LC(LBKT)>;
+            };
+        };
+
         keymap {
                 compatible = "zmk,keymap";none
 
