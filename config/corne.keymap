@@ -12,25 +12,25 @@
 // keyboard layout
 / {
         combos {
-            /* compatible = "zmk,combos"; */
-            /* combo_esc { */
-            /*     timeout-ms = <25>; */
-            /*     key-positions = <q q>; */
-            /*     bindings = <&kp ESCAPE>; */
-            /* }; */
+            compatible = "zmk,combos";
+            combo_esc {
+                timeout-ms = <25>;
+                key-positions = <Q Q>;
+                bindings = <&kp ESCAPE>;
+            };
             combo_tilde {
                 timeout-ms = <25>;
-                key-positions = <a a>;
+                key-positions = <A A>;
                 bindings = <&kp TILDE>;
             };
             combo_delete {
                 timeout-ms = <25>;
-                key-positions = <p p>;
+                key-positions = <P P>;
                 bindings = <&kp DEL>;
             };
             combo_vim_escape {
               timeout-ms = <50>;
-              key-positions = <j k>;
+              key-positions = <J K>;
               bindings = <&kp LC(LBKT)>;
             };
         };
