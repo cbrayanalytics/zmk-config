@@ -13,6 +13,8 @@
 / {
         combos {
             compatible = "zmk,combos";
+            
+            //modifier key combose on base layer
             combo_esc {
                 timeout-ms = <50>;
                 key-positions = <1 2>;
@@ -23,11 +25,42 @@
                 key-positions = <9 10>;
                 bindings = <&kp DEL>;
             };
+
+            //vim combos
             combo_vim {
                 timeout-ms = <50>;
                 key-positions = <19 20>;
                 bindings = <&kp LC(LBKT)>;
             };
+
+            // shift on base layer
+            combo_lshift {
+                timeout-ms = <50>;
+                key-positions = <26 27>;
+                bindings = <&kp LSHFT>;
+            };
+            combo_rshift {
+                timeout-ms = <50>;
+                key-positions = <34 35>;
+                bindings = <&kp RSHFT>;
+            }
+            
+            //cut,copy & paste on base layer
+            combo_copy {
+                timeout-ms = <50>;
+                key-positions = <26 28>;
+                bindings = <&kp LS(C)>;
+            }
+            combo_cut {
+                timeout-ms = <50>;
+                key-positions = <26 27>;
+                bindings = <&kp LS(V)>;
+            }
+            combo_paste {
+                timeout-ms = <50>;
+                key-positions = <26 29>;
+                bindings = <&kp LS(V)>;
+            }
         };
 
         keymap {
@@ -54,9 +87,9 @@
 // |SHFT |RGB_OFF|RGB_EFR|RGB_BRD|K_VOL_DN|     |K_PLAY_PAUSE|K_MUTE|K_NEXT|K_PREV|ALT|
 //                      | GUI |  P  | SPC |     | ENT |     | LCTRL |
                 bindings = <
-   &trans &kp TILDE &kp N1        &kp N2     &kp N3      &kp N4    &kp N5 &kp N6   &kp N7     &kp N8    &kp N9    &trans
-   &trans &kp TAB   &kp CAPSLOCK  &kp LALT   &trans      &trans    &kp N0 &kp LBKT &kp RBKT   &kp BSLH  &kp SQT   &trans
-   &trans &kp LSHFT &kp K_CUT &kp K_COPY &kp K_PASTE &trans    &trans &trans   &kp PLUS   &kp MINUS &kp RSHFT &trans
+   &trans &kp TILDE &kp N1        &kp N2     &kp N3      &kp N4    &kp N5 &kp N6    &kp N7     &kp N8    &kp N9    &trans
+   &trans &kp TAB   &kp CAPSLOCK  &kp LALT   &trans      &trans    &kp N0 &kp LBKT  &kp RBKT   &kp BSLH  &kp SQT   &trans
+   &trans &kp LSHFT &kp K_CUT     &kp K_COPY &kp K_PASTE &trans    &trans &kp LCTRL &kp EQUAL  & kp MINUS &kp RSHFT &trans
                                         &kp LGUI &trans  &kp SPACE      &kp RET &trans &kp BSPC 
                         >;
                 };
