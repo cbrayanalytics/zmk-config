@@ -43,24 +43,24 @@
                 timeout-ms = <50>;
                 key-positions = <34 35>;
                 bindings = <&kp RSHFT>;
-            }
+            };
             
             //cut,copy & paste on base layer
             combo_copy {
                 timeout-ms = <50>;
                 key-positions = <26 28>;
                 bindings = <&kp LS(C)>;
-            }
+            };
             combo_cut {
                 timeout-ms = <50>;
                 key-positions = <26 27>;
                 bindings = <&kp LS(V)>;
-            }
+            };
             combo_paste {
                 timeout-ms = <50>;
                 key-positions = <26 29>;
                 bindings = <&kp LS(V)>;
-            }
+            };
         };
 
         keymap {
