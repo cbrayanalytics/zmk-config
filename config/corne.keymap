@@ -4,8 +4,13 @@
 #include <dt-bindings/zmk/rgb.h>
 
 &led_strip {
-    chain-length = <27>;
+    chain-length = <27>; // Increase to 27 for five row keyboard to utilize ALL leds.
 };
+
+&soft_off {
+    hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
+};
+
 
 / {
 
@@ -27,10 +32,7 @@
 
     };
 
-    &soft_off {
-        hold-time-ms = <5000>; // Only turn off it the key is held for 5 seconds or longer.
-    };
-
+    // Keyboard section //
     keymap {
                 compatible = "zmk,battery,keymap";
 
