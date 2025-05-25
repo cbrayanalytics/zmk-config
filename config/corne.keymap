@@ -34,7 +34,7 @@
 
     // Keyboard section //
     keymap {
-                compatible = "zmk,battery,keymap";
+                compatible = "zmk,keymap";
 
                 default_layer {
                 bindings = <
