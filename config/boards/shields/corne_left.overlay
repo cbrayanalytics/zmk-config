@@ -1,4 +1,3 @@
-asdf;
 / {
     default_transform: default_transform {
         compatible = "zmk,matrix-transform";
