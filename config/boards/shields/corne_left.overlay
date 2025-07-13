@@ -1,6 +1,9 @@
 / {
     default_transform: default_transform {
         compatible = "zmk,matrix-transform";
+        rows = <5>;
+        columns = <6>;
+        // map = <RC(0,0) RC(0,1) ...>; // Only if needed
     };
 
     soft_off: soft_off {
@@ -13,11 +16,11 @@
         chain-length = <27>;
     };
 
-    vbatt1: vbatt {
+    vbatt0: vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
 
-    kscan1: kscan {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         row-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>, <&gpio0 28 GPIO_ACTIVE_LOW>, <&gpio0 27 GPIO_ACTIVE_LOW>, <&gpio0 26 GPIO_ACTIVE_LOW>, <&gpio0 2 GPIO_ACTIVE_LOW>;
         col-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>, <&gpio0 8 GPIO_ACTIVE_LOW>, <&gpio0 41 GPIO_ACTIVE_LOW>, <&gpio0 30 GPIO_ACTIVE_LOW>, <&gpio0 45 GPIO_ACTIVE_LOW>, <&gpio0 13 GPIO_ACTIVE_LOW>;
@@ -27,7 +30,12 @@
 
     chosen {
         zmk,matrix-transform = &default_transform;
-        // Do NOT include zmk,studio-rpc-uart here!
+        zmk,studio-rpc-uart = &uart0;
     };
+};
+
+&uart0 {
+    status = "okay";
+    current-speed = <115200>;
 };
 
