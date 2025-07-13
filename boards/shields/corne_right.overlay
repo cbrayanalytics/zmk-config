@@ -1,29 +1,33 @@
 / {
-    // Soft off feature (power off on long press)
-    soft_off: soft_off {
-        compatible = "zmk,soft-off";
-        hold-time-ms = <3000>; // 3 seconds hold to power off
+    default_transform: default_transform {
+        compatible = "zmk,matrix-transform";
     };
 
-    // RGB Underglow (27 LEDs for 34-key Corne)
+    soft_off: soft_off {
+        compatible = "zmk,soft-off";
+        hold-time-ms = <3000>;
+    };
+
     led_strip: led_strip {
         compatible = "zmk,ws2812-strip";
         chain-length = <27>;
-        // data-pin = <&gpio0 13 GPIO_ACTIVE_HIGH>; // Example, update as needed
     };
 
-    // Battery monitoring
     vbatt1: vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
 
-    // Key scan matrix for right half
     kscan1: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         row-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>, <&gpio0 28 GPIO_ACTIVE_LOW>, <&gpio0 27 GPIO_ACTIVE_LOW>, <&gpio0 26 GPIO_ACTIVE_LOW>, <&gpio0 2 GPIO_ACTIVE_LOW>;
         col-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>, <&gpio0 8 GPIO_ACTIVE_LOW>, <&gpio0 41 GPIO_ACTIVE_LOW>, <&gpio0 30 GPIO_ACTIVE_LOW>, <&gpio0 45 GPIO_ACTIVE_LOW>, <&gpio0 13 GPIO_ACTIVE_LOW>;
         diode-direction = "col2row";
         wakeup-source;
+    };
+
+    chosen {
+        zmk,matrix-transform = &default_transform;
+        // Do NOT include zmk,studio-rpc-uart here!
     };
 };
 
