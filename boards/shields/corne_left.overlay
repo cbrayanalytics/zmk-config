@@ -1,4 +1,3 @@
-asdfasdf;
 / {
     // Soft off feature (power off on long press)
     soft_off: soft_off {
