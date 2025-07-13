@@ -3,7 +3,14 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
+// enable soft off feture
+// set time to 3 seconds hold down on key
+&soft_off {
+        hold-time-ms = <3000>; // Only turn off it the key is held for 5 seconds or longer.
+};
 
+
+// enable led (27 total in 34 key corne)
 &led_strip {
     chain-length = <27>;
 };
@@ -16,13 +23,6 @@
             diode-direction = "col2row";
             wakeup-source;
     };
-
-        // enable soft off feture
-        // set time to 3 seconds hold down on key
-        &soft_off {
-                hold-time-ms = <3000>; // Only turn off it the key is held for 5 seconds or longer.
-        };
-
 
         keymap {
                 compatible = "zmk,keymap";
