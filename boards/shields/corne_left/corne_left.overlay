@@ -1,0 +1,27 @@
+/ {
+    // enable soft off feture
+    // set time to 3 seconds hold down on key
+    &soft_off {
+            hold-time-ms = <3000>; // Only turn off it the key is held for 5 seconds or longer.
+    };
+
+    // enable led (27 total in 34 key corne)
+    &led_strip {
+        chain-length = <27>;
+    };
+
+    vbatt0: vbatt {
+        compatible = "zmk,battery-nrf-vddh";
+    };
+
+    // enble kscan nodes to wakeup-source to wake keyboard from 
+    // deep sleep
+    // kscan0 = alias for left keyboard
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+    };
+
+
+};
