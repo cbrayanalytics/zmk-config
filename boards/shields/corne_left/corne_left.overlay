@@ -23,5 +23,8 @@
         wakeup-source;
     };
 
+    chosen {
+        zmk,studio-rpc-uart = &uart0; // or &uart1, &uart2, etc. as appropriate
+    };
 
 };
