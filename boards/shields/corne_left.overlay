@@ -1,9 +1,10 @@
+asdfasdf;
 / {
     // Soft off feature (power off on long press)
     soft_off: soft_off {
         compatible = "zmk,soft-off";
         hold-time-ms = <3000>; // 3 seconds hold to power off
-    }
+    };
 
     // RGB Underglow (27 LEDs for 34-key Corne)
     led_strip: led_strip {
