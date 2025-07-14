@@ -3,41 +3,46 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
+        &mt {
+          tapping-term-ms = <300>;
+        };
+
 / {
+
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
                       bindings = <
-//    ┌─────┬───────────┬───┬─────────────┬─────────┬─────────────┐   ┌─────┬──────────┬───────────┬───┬───────────┬─────┐
-//    │     │     Q     │ W │      E      │    R    │      T      │   │  Y  │    U     │     I     │ O │     P     │     │
-//    ├─────┼───────────┼───┼─────────────┼─────────┼─────────────┤   ├─────┼──────────┼───────────┼───┼───────────┼─────┤
-//    │     │ mt caps A │ S │      D      │    F    │      G      │   │  H  │    J     │     K     │ L │  mt \ ;   │     │
-//    ├─────┼───────────┼───┼─────────────┼─────────┼─────────────┤   ├─────┼──────────┼───────────┼───┼───────────┼─────┤
-//    │     │ mt lsft Z │ X │      C      │    V    │      B      │   │  N  │    M     │     ,     │ . │ mt lsft / │     │
-//    └─────┴───────────┴───┼─────────────┼─────────┼─────────────┤   ├─────┼──────────┼───────────┼───┴───────────┴─────┘
-//                          │ mt lalt esc │ mo lgui │ mt lctl tab │   │ ent │ lt 1 spc │ lt 2 bspc │
-//                          └─────────────┴─────────┴─────────────┘   └─────┴──────────┴───────────┘
-  &trans   &kp Q          &kp W   &kp E          &kp R      &kp T               &kp Y       &kp U         &kp I        &kp O     &kp P             &trans
-  &trans   &mt CAPS A     &kp S   &kp D          &kp F      &kp G               &kp H       &kp J         &kp K        &kp L     &mt BSLH SEMI     &trans
-  &trans   &mt LSHIFT Z   &kp X   &kp C          &kp V      &kp B               &kp N       &kp M         &kp COMMA    &kp DOT   &mt LSHIFT FSLH   &trans
-                                  &mt LALT ESC   &mo LGUI   &mt LCTRL TAB       &kp ENTER   &lt 1 SPACE   &lt 2 BSPC
+//    ┌─────┬───────────┬───────────┬─────────────┬───────────┬─────────────┐   ┌──────────┬───────────┬───────────┬──────────┬───────────┬─────┐
+//    │     │     Q     │     W     │      E      │     R     │      T      │   │    Y     │     U     │     I     │    O     │     P     │     │
+//    ├─────┼───────────┼───────────┼─────────────┼───────────┼─────────────┤   ├──────────┼───────────┼───────────┼──────────┼───────────┼─────┤
+//    │     │ mt lgui A │ mt lalt S │  mt lctl D  │ mt lsft F │  mt tab G   │   │ mt esc H │ mt rsft J │ mt ralt K │ mt del L │  mt \ ;   │     │
+//    ├─────┼───────────┼───────────┼─────────────┼───────────┼─────────────┤   ├──────────┼───────────┼───────────┼──────────┼───────────┼─────┤
+//    │     │ mt lsft Z │     X     │      C      │     V     │      B      │   │    N     │     M     │     ,     │    .     │ mt lsft / │     │
+//    └─────┴───────────┴───────────┼─────────────┼───────────┼─────────────┤   ├──────────┼───────────┼───────────┼──────────┴───────────┴─────┘
+//                                  │ mt lalt esc │  mo lgui  │ mt lctl tab │   │   ent    │ lt 1 spc  │ lt 2 bspc │
+//                                  └─────────────┴───────────┴─────────────┘   └──────────┴───────────┴───────────┘
+  &trans   &kp Q          &kp W        &kp E          &kp R          &kp T               &kp Y       &kp U          &kp I        &kp O       &kp P             &trans
+  &trans   &mt LGUI A     &mt LALT S   &mt LCTRL D    &mt LSHIFT F   &mt TAB G           &mt ESC H   &mt RSHIFT J   &mt RALT K   &mt DEL L   &mt BSLH SEMI     &trans
+  &trans   &mt LSHIFT Z   &kp X        &kp C          &kp V          &kp B               &kp N       &kp M          &kp COMMA    &kp DOT     &mt LSHIFT FSLH   &trans
+                                       &mt LALT ESC   &mo LGUI       &mt LCTRL TAB       &kp ENTER   &lt 1 SPACE    &lt 2 BSPC
                       >;
                 };
 
                 lower_layer {
                       bindings = <
 //    ┌─────┬──────┬─────┬─────────────┬─────────┬────────────────┐   ┌──────┬──────┬─────┬──────┬──────┬─────┐
-//    │     │  1   │  2  │      3      │    4    │       5        │   │  6   │  7   │  8  │  9   │  0   │     │
-//    ├─────┼──────┼─────┼─────────────┼─────────┼────────────────┤   ├──────┼──────┼─────┼──────┼──────┼─────┤
 //    │     │  `   │     │             │         │ &studio_unlock │   │ left │ down │ up  │ rght │  '   │     │
+//    ├─────┼──────┼─────┼─────────────┼─────────┼────────────────┤   ├──────┼──────┼─────┼──────┼──────┼─────┤
+//    │     │  1   │  2  │      3      │    4    │       5        │   │  6   │  7   │  8  │  9   │  0   │     │
 //    ├─────┼──────┼─────┼─────────────┼─────────┼────────────────┤   ├──────┼──────┼─────┼──────┼──────┼─────┤
 //    │     │ lsft │     │             │         │   &soft_off    │   │  -   │  =   │  [  │  ]   │ rsft │     │
 //    └─────┴──────┴─────┼─────────────┼─────────┼────────────────┤   ├──────┼──────┼─────┼──────┴──────┴─────┘
 //                       │ mt lalt esc │ mo lgui │  mt lctl tab   │   │ ent  │      │     │
 //                       └─────────────┴─────────┴────────────────┘   └──────┴──────┴─────┘
-  &trans   &kp N1      &kp N2   &kp N3         &kp N4     &kp N5               &kp N6      &kp N7      &kp N8     &kp N9      &kp N0      &trans
   &trans   &kp GRAVE   &trans   &trans         &trans     &studio_unlock       &kp LEFT    &kp DOWN    &kp UP     &kp RIGHT   &kp SQT     &trans
+  &trans   &kp N1      &kp N2   &kp N3         &kp N4     &kp N5               &kp N6      &kp N7      &kp N8     &kp N9      &kp N0      &trans
   &trans   &kp LSHFT   &trans   &trans         &trans     &soft_off            &kp MINUS   &kp EQUAL   &kp LBKT   &kp RBKT    &kp RSHFT   &trans
                                 &mt LALT ESC   &mo LGUI   &mt LCTRL TAB        &kp ENTER   &trans      &trans
                       >;
