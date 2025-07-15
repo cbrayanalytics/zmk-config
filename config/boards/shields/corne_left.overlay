@@ -1,17 +1,5 @@
 / {
-    default_transform: default_transform {
-        compatible = "zmk,matrix-transform";
-        rows = <5>;
-        columns = <6>;
-        // map = <RC(0,0) RC(0,1) ...>; // Only if needed for custom layouts
-    };
-
-    soft_off: soft_off {
-        compatible = "zmk,soft-off";
-        hold-time-ms = <3000>;
-    };
-
-    led_strip: led_strip {
+    default_transform: default_transform { compatible = "zmk,matrix-transform"; rows = <5>; columns = <6>; // map = <RC(0,0) RC(0,1) ...>; // Only if needed for custom layouts }; soft_off: soft_off { compatible = "zmk,soft-off"; hold-time-ms = <3000>; }; led_strip: led_strip {
         compatible = "zmk,ws2812-strip";
         chain-length = <24>;
         // Consider adding 'label = "LED Strip";' for clarity if using multiple LEDs
