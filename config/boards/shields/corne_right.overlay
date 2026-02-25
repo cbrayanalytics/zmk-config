@@ -39,6 +39,7 @@
     chosen {
         zmk,matrix-transform = &default_transform;
         zmk,underglow = &led_strip;
+        zmk,battery = &vbatt1;
     };
 
 };

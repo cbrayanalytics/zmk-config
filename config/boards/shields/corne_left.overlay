@@ -30,6 +30,7 @@
         zmk,matrix-transform = &default_transform;
         zmk,studio-rpc-uart = &uart0;
         zmk,underglow = &led_strip;
+        zmk,battery = &vbatt0;
     };
 };
 
