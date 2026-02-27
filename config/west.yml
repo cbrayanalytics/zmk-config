@@ -1,19 +1,18 @@
 manifest:
-  defaults:
-    revision: v0.3
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: englmaxi
-      url-base: https://github.com/englmaxi
+    # support nice_oled and nice_epaper
+    - name: mctechnology17
+      url-base: https://github.com/mctechnology17
   projects:
     - name: zmk
       remote: zmkfirmware
+      revision: v0.3.0
       import: app/west.yml
-    - name: zmk-dongle-display
-      remote: englmaxi
+    # support nice_oled and nice_epaper
+    - name: zmk-nice-oled
+      remote: mctechnology17
       revision: main
-      path: modules/zmk-dongle-display
   self:
     path: config
-
