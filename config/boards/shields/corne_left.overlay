@@ -1,3 +1,6 @@
+#include <dt-bindings/led/led.h>
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
+
 / {
     default_transform: default_transform {
         compatible = "zmk,matrix-transform";
@@ -39,7 +42,46 @@
         zmk,matrix-transform = &default_transform;
         zmk,studio-rpc-uart = &uart0;
         zmk,battery = &vbatt0;
+        zmk,underglow = &led_strip;
         zephyr,display = &oled_left;
+    };
+};
+
+/* SPI3 for WS2812/SK6812 LED strip — MOSI on P0.06 (D1, standard Corne LED data pin).
+ * Col-0 of the 36-key kscan also maps to P0.06 but has no physical switches,
+ * so handing the pin to SPIM3 does not lose any key positions.
+ */
+&pinctrl {
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+        };
+    };
+    spi3_sleep: spi3_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+            low-power-enable;
+        };
+    };
+};
+
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-1 = <&spi3_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+        chain-length = <24>;   /* 18 per-key + 6 underglow per side */
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_RED
+                         LED_COLOR_ID_BLUE>;
     };
 };
 
