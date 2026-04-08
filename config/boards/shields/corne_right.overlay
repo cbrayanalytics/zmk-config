@@ -72,7 +72,7 @@
         compatible = "worldsemi,ws2812-spi";
         reg = <0>;
         spi-max-frequency = <4000000>;
-        chain-length = <10>;   /* TEST: confirm 10-LED chain boundary; restore to 24 once fixed */
+        chain-length = <11>;   /* TEST: does LED #11 (index 10) light? yes=dead DOUT, no=broken trace/DIN */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN
