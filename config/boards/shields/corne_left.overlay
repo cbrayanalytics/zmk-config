@@ -1,6 +1,15 @@
 #include <dt-bindings/led/led.h>
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
 
 / {
+    default_transform: default_transform {
+        compatible = "zmk,matrix-transform";
+        rows = <5>;
+        columns = <6>;
+        // No explicit map — uses sequential 5×6 grid.
+        // Row 4 (P0.02) covers the thumb cluster.
+    };
+
     soft_off: soft_off {
         compatible = "zmk,soft-off";
         hold-time-ms = <3000>;
@@ -13,33 +22,35 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
 
-        row-gpios =
-            <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-            <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        row-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 
-        col-gpios =
-            <&gpio0 22 GPIO_ACTIVE_HIGH>,
-            <&gpio0 24 GPIO_ACTIVE_HIGH>,
-            <&gpio1 0  GPIO_ACTIVE_HIGH>,
-            <&gpio0 9  GPIO_ACTIVE_HIGH>,
-            <&gpio0 20 GPIO_ACTIVE_HIGH>,
-            <&gpio0 17 GPIO_ACTIVE_HIGH>;
+        col-gpios = <&gpio0 6  GPIO_ACTIVE_HIGH>,
+                    <&gpio0 8  GPIO_ACTIVE_HIGH>,
+                    <&gpio0 41 GPIO_ACTIVE_HIGH>,
+                    <&gpio0 30 GPIO_ACTIVE_HIGH>,
+                    <&gpio0 45 GPIO_ACTIVE_HIGH>,
+                    <&gpio0 13 GPIO_ACTIVE_HIGH>;
 
         diode-direction = "col2row";
         wakeup-source;
     };
 
     chosen {
+        zmk,matrix-transform = &default_transform;
         zmk,studio-rpc-uart = &uart0;
         zmk,battery = &vbatt0;
-        zephyr,display = &oled_left;
         zmk,underglow = &led_strip;
+        zephyr,display = &oled_left;
     };
 };
 
-/* 128x32 SSD1306 display on I2C0 @ 0x3c */
+/* 128×64 SSD1306 on I2C0 — left half display.
+ * Uses P0.17 (SDA) and P0.20 (SCL) — do NOT use these as kscan pins.
+ */
 &i2c0 {
     status = "okay";
 
@@ -47,11 +58,11 @@
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
-        height = <32>;
+        height = <64>;
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <31>;
+        multiplex-ratio = <63>;
         segment-remap;
         com-invdir;
         prechargep = <0x22>;
@@ -63,10 +74,10 @@
     current-speed = <115200>;
 };
 
-/*
- * SPI3 + WS2812 LED strip.
- * Data pin: Nice!Nano v2 P0.06 (Pro Micro D1).
- * chain-length: 18 per-key + 6 underglow = 24 total per half.
+/* SPI3 drives the SK6812 LED chain on P0.06 (Pro Micro D1).
+ * chain-length = 18 per-key + 6 underglow = 24 total per half.
+ * The full node is defined here so it takes priority over the upstream
+ * Corne shield's board-level overlay (which defaults chain-length to 10).
  */
 &pinctrl {
     spi3_default: spi3_default {
