@@ -1,4 +1,0 @@
-/* Applied after all shield overlays — definitively overrides upstream chain-length=10. */
-&led_strip {
-    chain-length = <24>;
-};
