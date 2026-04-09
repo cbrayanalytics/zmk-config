@@ -33,9 +33,15 @@
 
     chosen {
         zmk,battery = &vbatt1;
+        zmk,studio-rpc-uart = &uart0; 
         zmk,underglow = &led_strip;
         zephyr,display = &oled_right;
     };
+};
+
+&uart0 {
+    status = "okay";
+    current-speed = <115200>;
 };
 
 /* 128x32 SSD1306 display on I2C0 @ 0x3c */
