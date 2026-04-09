@@ -1,0 +1,7 @@
+/* Override upstream Corne shield's chain-length=10 default.
+ * ZMK's built-in nice_nano_nrf52840_zmk.overlay sets chain-length=10;
+ * this user-config file is merged after it and sets the correct value.
+ */
+&led_strip {
+    chain-length = <24>;
+};
