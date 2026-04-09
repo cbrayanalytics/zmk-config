@@ -6,11 +6,11 @@
         hold-time-ms = <3000>;
     };
 
-    vbatt1: vbatt {
+    vbatt0: vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
 
-    kscan1: kscan {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
 
         row-gpios =
@@ -20,20 +20,22 @@
             <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 
         col-gpios =
-            <&gpio0 6  GPIO_ACTIVE_HIGH>,
-            <&gpio0 8  GPIO_ACTIVE_HIGH>,
-            <&gpio0 41 GPIO_ACTIVE_HIGH>,
-            <&gpio0 30 GPIO_ACTIVE_HIGH>,
-            <&gpio0 45 GPIO_ACTIVE_HIGH>;
+            <&gpio0 22 GPIO_ACTIVE_HIGH>,
+            <&gpio0 24 GPIO_ACTIVE_HIGH>,
+            <&gpio1 0  GPIO_ACTIVE_HIGH>,
+            <&gpio0 9  GPIO_ACTIVE_HIGH>,
+            <&gpio0 20 GPIO_ACTIVE_HIGH>,
+            <&gpio0 17 GPIO_ACTIVE_HIGH>;
 
         diode-direction = "col2row";
         wakeup-source;
     };
 
     chosen {
-        zmk,battery = &vbatt1;
+        zmk,studio-rpc-uart = &uart0;
+        zmk,battery = &vbatt0;
+        zephyr,display = &oled_left;
         zmk,underglow = &led_strip;
-        zephyr,display = &oled_right;
     };
 };
 
@@ -41,7 +43,7 @@
 &i2c0 {
     status = "okay";
 
-    oled_right: ssd1306@3c {
+    oled_left: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
@@ -56,9 +58,14 @@
     };
 };
 
+&uart0 {
+    status = "okay";
+    current-speed = <115200>;
+};
+
 /*
  * SPI3 + WS2812 LED strip.
- * Data pin: Nice!Nano v2 P0.06 (Pro Micro D1/MOSI).
+ * Data pin: Nice!Nano v2 P0.06 (Pro Micro D1).
  * chain-length: 18 per-key + 6 underglow = 24 total per half.
  */
 &pinctrl {
@@ -67,7 +74,6 @@
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
         };
     };
-
     spi3_sleep: spi3_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
@@ -90,9 +96,8 @@
         chain-length = <24>;
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
-        color-mapping =
-            <LED_COLOR_ID_GREEN
-             LED_COLOR_ID_RED
-             LED_COLOR_ID_BLUE>;
+        color-mapping = <LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_RED
+                         LED_COLOR_ID_BLUE>;
     };
 };
